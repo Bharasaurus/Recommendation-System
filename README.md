@@ -1,17 +1,12 @@
-# Netflix-Recommendation-System
+# Recommendation-System
 
-Data Text File contains the rating of a certain movie ID that is rated by several people with respective ID and on a Specific Date
-Movie Name CSV File contains the movie ID, Movie Name and the Date
+**Data Loading and Preprocessing** - We start by loading the movie ratings data from a file. This dataset contains information about which customer gave what rating to which movie. We then assign unique identifiers to movies and perform some initial calculations like summarizing ratings by movie and customer.
 
-Rating --> Float
-Customer ID --> Int
-Movie ID --> Int
+**Data Trimming** - To make accurate recommendations, we remove movies with too many ratings (which could be biased by popularity) and customers who have given too few ratings (which might not provide reliable information).
 
-Adding another Movie ID Column into the Netflix Dataset.
-After that EDA is performed where the less rated and number of rating per movie is huge in number are removed form the dataset.
-Two Filters Applied --> Less Rated Movies and Remove Customers who rate very less (May be considered as spam)
-SVD - Singular Value Decompostion --> This helps compress a huge dataset and also not loose much data in process
+**Creating a User-Movie Matrix** - We transform the data into a user-movie matrix, where each row corresponds to a user, each column corresponds to a movie, and the values in the matrix are the ratings. This matrix helps us understand how users relate to movies.
 
-Recommendation Process -
-1. What Movies/Series you have watched before
-2. What Similar movies you watched and rated 5, is compared to another random person who watched that same movie and rated it 5. So the movies he rated 5 will also be recommeneded to you
+**Generating Recommendations for a User** -
+We choose a specific user to generate personalized recommendations.
+Based on the trained SVD model, we estimate how the user might rate movies they haven't seen.
+We then sort these estimated ratings to provide a list of recommended movies.
